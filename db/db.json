@@ -1,0 +1,24 @@
+{
+  "trips": [
+    {
+      "id": "c749",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "place": "sultan ahmet camii",
+      "startDate": "2026-01-31",
+      "endDate": "2026-02-03",
+      "image": "https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg",
+      "description": "asdasdsa"
+    },
+    {
+      "id": "9c2c",
+      "country": "France",
+      "city": "Paris",
+      "place": "sultan ahmet camii",
+      "startDate": "2026-02-01",
+      "endDate": "2026-02-04",
+      "image": "https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg",
+      "description": "asdasdasd"
+    }
+  ]
+}
