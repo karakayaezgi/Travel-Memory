@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import * as Yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
 import { addTrip } from '../redux/slices/tripSlice'
+
+
 
 
 const schema = Yup.object({
@@ -16,24 +18,24 @@ const schema = Yup.object({
     description: Yup.string().required('At least write something!')
 })
 
-const AddModal = ({setIsTravelModal}) => {
+const AddModal = ({setIsTravelModal, countries}) => {
 
     const { register, handleSubmit, reset, watch, formState:{errors}} = useForm({resolver: yupResolver(schema)})
     const selectedCountry = watch('country')
     const dispatch = useDispatch()
-
-    const countryData = {
-        Turkey: ["Ankara", "Istanbul", "Izmir"],
-        Germany: ["Berlin", "Munich"],
-        France: ["Paris", "Lyon"]
-    }
+    
 
     const onSubmit = (data) =>{
         setIsTravelModal(false)
         dispatch(addTrip(data))
     }
 
+    const selectedCountryData = countries.find((country) => (
+        country.country == selectedCountry
+    ))
 
+    
+    
 
     return (
         <div className='bg-amber-50 absolute p-8 rounded-2xl w-[350px] md:w-[500px]'>
@@ -46,19 +48,19 @@ const AddModal = ({setIsTravelModal}) => {
                     <select {...register("country")} className='outline-0 p-2 border border-gray-300 rounded-2xl'>
                         <option value="">Select Country</option>
                         {
-                            Object.keys(countryData).map((country) => (
-                                <option key={country} value={country}>{country}</option>
+                            countries.map((country, i) => (
+                                <option key={i} value={country.country}>{country.country}</option>
                             ))
                         }
                     </select>
                     {errors.country && <p className='text-red-700 text-xs'>{errors.country.message}</p>}
                 </div>
                 <div className='flex flex-col'>
-                    <select {...register("city")} className='outline-0 p-2 border border-gray-300 rounded-2xl'>
+                    <select {...register("city")} disabled={!selectedCountry} className='outline-0 p-2 border border-gray-300 rounded-2xl'>
                         <option value="">Select City</option>
                         {
                             selectedCountry && 
-                            countryData[selectedCountry].map((city) => (
+                            selectedCountryData.cities.map((city) => (
                                 <option key={city} value={city}>{city}</option>
                             ))
                         }
