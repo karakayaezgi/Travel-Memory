@@ -6,8 +6,18 @@ export const addTrip = createAsyncThunk(
   async (tripData) => {
     const response = await axios.post('http://localhost:5000/trips', tripData)
     return response.data
-  },
+  }
 )
+
+export const getTrip = createAsyncThunk(
+  'trip/getTrip',
+  async() => {
+    const response = await axios.get('http://localhost:5000/trips')
+    return response.data
+  }
+)
+
+
 
 const initialState = {
   trips:[]
@@ -22,6 +32,9 @@ export const tripSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addTrip.fulfilled, (state,action) => {
       state.trips.push(action.payload)
+    })
+    builder.addCase(getTrip.fulfilled, (state,action) => {
+      state.trips = action.payload
     })
   }
 })
