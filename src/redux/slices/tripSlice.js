@@ -17,8 +17,6 @@ export const getTrip = createAsyncThunk(
   }
 )
 
-
-
 const initialState = {
   trips:[]
 }
