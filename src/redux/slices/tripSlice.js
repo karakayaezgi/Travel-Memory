@@ -29,7 +29,7 @@ export const tripSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(addTrip.fulfilled, (state,action) => {
-      state.trips.push(action.payload)
+      state.trips.unshift(action.payload)
     })
     builder.addCase(getTrip.fulfilled, (state,action) => {
       state.trips = action.payload

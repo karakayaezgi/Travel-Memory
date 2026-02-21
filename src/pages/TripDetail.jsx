@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { CiCalendar, CiClock1  } from "react-icons/ci";
+import { CiCalendar, CiClock1 } from "react-icons/ci";
 import { RxDividerVertical } from "react-icons/rx";
 import { getFormatDate } from '../utils/formatDate';
-import {calculateTotalDaysOfTrip} from '../utils/totalDays'
+import { calculateTotalDaysOfTrip } from '../utils/totalDays'
 
 const TripDetail = () => {
 
@@ -14,7 +14,7 @@ const TripDetail = () => {
     const { country, city, place, startDate, endDate, description, image } = selectedTrip || {}
     const formatDateStart = getFormatDate(startDate)
     const formatDateEnd = getFormatDate(endDate)
-    
+
     const totalDays = calculateTotalDaysOfTrip(selectedTrip)
 
     return (
@@ -45,6 +45,16 @@ const TripDetail = () => {
                         <p className='text-sm sm:text-base md:text-lg lg:text-xl font-semibold'>{formatDateStart} / {formatDateEnd}</p>
                     </div>
                 </div>
+            </div>
+            <div className="flex w-[300px] sm:w-[350px] md:w-[400px] lg:w-[500px] mx-auto my-20">
+                <div className="w-1 bg-gradient-to-b from-yellow-400 to-orange-500 mr-4"><p className='text-yellow-400'>.</p></div>
+                <p className="text-gray-700 leading-relaxed">
+                    {description}
+                </p>
+            </div>
+            <div className='flex justify-center gap-5'>
+                <p className='text-xs py-1 px-3 bg-red-200 text-red-600 rounded-2xl cursor-pointer transition-all ease-in-out duration-200 hover:scale-105'>Remove Trip</p>
+                <p className='text-xs py-1 px-3 bg-amber-100 rounded-2xl cursor-pointer transition-all ease-in-out duration-200 hover:scale-105'>Update Trip</p>
             </div>
         </div>
     )
