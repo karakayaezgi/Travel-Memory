@@ -9,3 +9,12 @@ export const calculateTotalDays = (trips = []) => {
         return acc + Math.ceil(days)
     },0)
 }
+
+export const calculateTotalDaysOfTrip = (trip) => {
+    if(!trip) return
+    const start = new Date(trip.startDate)
+    const end = new Date(trip.endDate)
+    const diff = end- start
+    const days = diff/(1000 * 60 * 60 * 24)
+    return Math.ceil(days)
+}

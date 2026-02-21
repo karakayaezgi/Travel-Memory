@@ -19,7 +19,7 @@ const HeroSection = () => {
     const {country, startDate, endDate, image, place} = lastAdventure || []
     
     const formatDateStart = getFormatDate(startDate)
-    const formatDateEnd= getFormatDate(endDate)
+    const formatDateEnd = getFormatDate(endDate)
 
     trips.forEach((trip) => {
         const country = trip.country
