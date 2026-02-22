@@ -16,8 +16,8 @@ const TripCard = ({ trip }) => {
 
 
     return (
-        <div className='relative rounded-2xl cursor-pointer transition-all ease-in-out duration-300 hover:scale-105'>
-            <Link to={`/trips/${trip.id}`}  className=' h-[400px]'>
+        <div className='relative rounded-2xl cursor-pointer transition-all ease-in-out duration-300 hover:scale-105 h-[400px]'>
+            <Link to={`/trips/${trip.id}`}>
                 <img className='w-full h-full object-cover rounded-2xl' src={trip.image} alt={trip.place} />
                 <div className='absolute bottom-2 left-2 text-white'>
                     <p className='text-2xl font-bold'>{trip.country}</p>
