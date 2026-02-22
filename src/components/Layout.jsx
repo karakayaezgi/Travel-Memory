@@ -12,6 +12,7 @@ const Layout = () => {
 
     const [isOpenMobileModal, setIsOpenMobileModal] = useState(false)
     const [isTravelModal, setIsTravelModal] = useState(false)
+    const [favoriteTripIds, setFavoriteTripIds] = useState([])
     const dispatch = useDispatch()
     const {countries} = useSelector((store) => store.location)
 
@@ -19,14 +20,14 @@ const Layout = () => {
         dispatch(fetchCountries())
         
     },[])
-    
+
     
 
     return (
-        <div className="flex flex-col relative" >
+        <div className="flex flex-col relative" > 
             <Navbar setIsOpenMobileModal={setIsOpenMobileModal} />
             <main>
-                <Outlet context={{isTravelModal: setIsTravelModal}}/>
+                <Outlet context={{isTravelModal: setIsTravelModal, favoriteTripIds: favoriteTripIds, setFavoriteTripIds:setFavoriteTripIds}}/>
             </main>
             <Footer />
             {

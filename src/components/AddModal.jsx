@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form"
 import * as Yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -15,7 +15,7 @@ const schema = Yup.object({
     startDate: Yup.string().required('You must enter a start date!'),
     endDate: Yup.string().required('You must enter a end date!'),
     image: Yup.string().required('You must enter a image link!'),
-    description: Yup.string().required('At least write something!')
+    description: Yup.string().required('At least write something!'),
 })
 
 const AddModal = ({setIsTravelModal, countries}) => {
@@ -34,6 +34,7 @@ const AddModal = ({setIsTravelModal, countries}) => {
         country.country == selectedCountry
     ))
 
+    
     
     
 
